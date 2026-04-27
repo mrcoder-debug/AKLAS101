@@ -1,4 +1,6 @@
-import { requireUser, toActor } from "@/server/auth/session";
+export const dynamic = 'force-dynamic';
+
+import { requireUserOrRedirect, toActor } from "@/server/auth/session";
 import { getOwnProfile } from "@/services/users.service";
 import { getMyStats, getMyBadges } from "@/services/gamification.service";
 import { listCertificates } from "@/services/certificate.service";
@@ -7,7 +9,7 @@ import { GamificationStats } from "@/components/gamification/gamification-stats"
 import { UserCircle } from "lucide-react";
 
 export default async function ProfilePage() {
-  const user = await requireUser();
+  const user = await requireUserOrRedirect();
   const ctx = { actor: toActor(user) };
 
   const [profile, stats, badges, certs] = await Promise.all([
