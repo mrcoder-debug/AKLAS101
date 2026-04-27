@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { requireUserOrRedirect, toActor } from "@/server/auth/session";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Topnav } from "@/components/layout/topnav";
